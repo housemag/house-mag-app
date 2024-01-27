@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193784866876",
+    "project_id": "house-mag-app00",
+    "storage_bucket": "house-mag-app00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193784866876:android:c3bf46474ed1173b1b7b39",
+        "android_client_info": {
+          "package_name": "com.house.mag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUwMqSJdOv_OcoKke6FMvyizYKBH9ApoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
