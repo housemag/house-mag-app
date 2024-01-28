@@ -3,7 +3,7 @@ import 'package:wordpress_app/utils/convert_hex_color.dart';
 
 class Config {
   // App Name
-  static const appName = 'News Freak';
+  static const appName = 'House Mag';
 
   //iOS App ID (Ignore this for Android)
   static const iOSAppID = '000000';

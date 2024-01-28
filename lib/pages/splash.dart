@@ -21,7 +21,9 @@ class _SplashPageState extends State<SplashPage> {
     final UserBloc ub = context.read<UserBloc>();
     final configs = context.read<ConfigBloc>().configs!;
     Future.delayed(const Duration(milliseconds: 0)).then((value) {
-      if (ub.isSignedIn == true || ub.guestUser == true || !configs.welcomeScreenEnabled) {
+      if (ub.isSignedIn == true ||
+          ub.guestUser == true ||
+          !configs.welcomeScreenEnabled) {
         _gotoHomePage();
       } else {
         _gotoWelcomePage();
@@ -39,14 +41,15 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Future.microtask(() => context.read<ConfigBloc>().getConfigsData().then((bool hasData) {
-          if (hasData) {
-            _afterSplash();
-          } else {
-            debugPrint('No configs data found');
-            nextScreenReplaceAnimation(context, const NoInternet());
-          }
-        }));
+    Future.microtask(
+        () => context.read<ConfigBloc>().getConfigsData().then((bool hasData) {
+              if (hasData) {
+                _afterSplash();
+              } else {
+                debugPrint('No configs data found');
+                nextScreenReplaceAnimation(context, const NoInternet());
+              }
+            }));
     super.initState();
   }
 
@@ -56,8 +59,8 @@ class _SplashPageState extends State<SplashPage> {
       bottomNavigationBar: SafeArea(child: LoadingIndicatorWidget()),
       body: Center(
         child: Image(
-          height: 120,
-          width: 120,
+          height: 260,
+          width: 260,
           image: AssetImage(Config.splash),
           fit: BoxFit.contain,
         ),
