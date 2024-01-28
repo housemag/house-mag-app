@@ -3,7 +3,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class LanguageConfig {
   //Initial Language
-  static const Locale startLocale = Locale('en', 'US');
+  static const Locale startLocale = Locale('pt', 'BR');
 
   //Language if any error happens
   static const Locale fallbackLocale = Locale('en', 'US');
@@ -11,19 +11,20 @@ class LanguageConfig {
   // Languages
   static const Map<String, List<String>> languages = {
     //language_name : [language_code, country_code(Capital format)]
+    "Português": ['pt', 'BR'],
     "English": ['en', 'US'],
     "Spanish": ['es', 'ES'],
-    "French" : ['fr', 'FR'],
+    "French": ['fr', 'FR'],
     "Hindi": ['hi', 'IN'],
     "Arabic": ['ar', 'SA'],
     "Bangla": ['bn', 'BD'],
   };
 
-
-
   // Local Messages for time ago
   static void setLocaleMessagesForTimeAgo() {
-    final List<String> localesString = languages.values.map((e) => Locale(e.first, e.last).toString()).toList();
+    final List<String> localesString = languages.values
+        .map((e) => Locale(e.first, e.last).toString())
+        .toList();
 
     //must be align with languages
     timeago.setLocaleMessages(localesString[0], timeago.EnMessages());
@@ -35,6 +36,10 @@ class LanguageConfig {
   }
 
   // Don't edit this
-  static List<Locale> supportedLocales =
-      languages.values.map((e) => Locale(e.first, e.last,)).toList();
+  static List<Locale> supportedLocales = languages.values
+      .map((e) => Locale(
+            e.first,
+            e.last,
+          ))
+      .toList();
 }

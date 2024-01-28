@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wordpress_app/config/language_config.dart';
+import 'package:wordpress_app/firebase_options.dart';
 import 'package:wordpress_app/services/app_service.dart';
 import 'app.dart';
 import 'constants/constant.dart';
@@ -13,7 +14,9 @@ import 'constants/constant.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
