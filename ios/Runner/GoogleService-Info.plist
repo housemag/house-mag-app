@@ -2,18 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>193784866876-p023qoiarqouge7tur18r4701rn64mpk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.193784866876-p023qoiarqouge7tur18r4701rn64mpk</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>193784866876-hjuifq5r2ff75h44e4l8g73kn4lss4gj.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA6tH_yl7DzaX46s2euQOu0Orh-FDfmRVQ</string>
+	<string>AIzaSyAM0FSivq9wwwxIKSwPqWZqXr-CGfkqwVw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>936729598956</string>
+	<string>193784866876</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.house.mag</string>
 	<key>PROJECT_ID</key>
-	<string>house-mag-app</string>
+	<string>house-mag-app00</string>
 	<key>STORAGE_BUCKET</key>
-	<string>house-mag-app.appspot.com</string>
+	<string>house-mag-app00.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:936729598956:ios:03ce636fa1059d5f28fec9</string>
+	<string>1:193784866876:ios:2fba1e4ba3201aca1b7b39</string>
 </dict>
 </plist>

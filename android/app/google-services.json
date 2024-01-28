@@ -12,7 +12,20 @@
           "package_name": "com.house.mag"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "193784866876-hjuifq5r2ff75h44e4l8g73kn4lss4gj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.house.mag",
+            "certificate_hash": "d8d4b6eec309e47b9bede11099935fc0c1ef8251"
+          }
+        },
+        {
+          "client_id": "193784866876-72chme8boqn79bodta6v5c430lnvla5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBUwMqSJdOv_OcoKke6FMvyizYKBH9ApoM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193784866876-72chme8boqn79bodta6v5c430lnvla5d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "193784866876-p023qoiarqouge7tur18r4701rn64mpk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.house.mag"
+              }
+            }
+          ]
         }
       }
     }

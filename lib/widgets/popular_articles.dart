@@ -30,13 +30,14 @@ class PopularArticles extends StatelessWidget {
                     wordSpacing: 1,
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
-                  )
-              ).tr(),
+                  )).tr(),
               const Spacer(),
               TextButton(
                 child: Text(
                   'view-all',
-                  style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontSize: 14),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                      fontSize: 14),
                 ).tr(),
                 onPressed: () {
                   nextScreenPopupiOS(context, const PopularArticlesPage());
@@ -85,8 +86,9 @@ class _NoContents extends StatelessWidget {
     return Container(
       height: 170,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(5)),
-      child: const Text('No contents found!'),
+      decoration: BoxDecoration(
+          color: Colors.grey[200], borderRadius: BorderRadius.circular(5)),
+      child: const Text('no-content').tr(),
     );
   }
 }

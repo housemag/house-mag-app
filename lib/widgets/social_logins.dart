@@ -66,11 +66,12 @@ class _SocialLoginsState extends State<SocialLogins> {
     }
   }
 
-  _handleAppleSignIn () async{
+  _handleAppleSignIn() async {
     final ub = context.read<UserBloc>();
     setState(() => appleLoginStarted = true);
-    UserModel? user = await AuthService.signInWithApple().onError((error, stackTrace){
-      setState(()=> appleLoginStarted = false);
+    UserModel? user =
+        await AuthService.signInWithApple().onError((error, stackTrace) {
+      setState(() => appleLoginStarted = false);
       return null;
     });
     if (user != null) {
@@ -90,7 +91,6 @@ class _SocialLoginsState extends State<SocialLogins> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -107,7 +107,7 @@ class _SocialLoginsState extends State<SocialLogins> {
                   ? const CircularProgressIndicator(
                       color: Colors.white,
                     )
-                  : const Icon(        
+                  : const Icon(
                       FontAwesome.google,
                       size: 22,
                       color: Colors.white,

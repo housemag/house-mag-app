@@ -70,8 +70,7 @@ class ConfigModel {
       required this.videoTabEnabled,
       required this.socialLoginsEnabled,
       required this.threadsUrl,
-      required this.fbLoginEnabled
-  });
+      required this.fbLoginEnabled});
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) {
     return ConfigModel(
@@ -108,8 +107,7 @@ class ConfigModel {
         videoTabEnabled: _getBool(json['video_tab_enabled']),
         socialLoginsEnabled: _getBool(json['social_logins_enabled']),
         threadsUrl: _getString(json['threads_url']),
-        fbLoginEnabled: _getBool(json['fb_login_enabled'])
-    );
+        fbLoginEnabled: _getBool(json['fb_login_enabled']));
   }
 
   static String _getPostLayout(dynamic value) {
@@ -136,7 +134,7 @@ class ConfigModel {
     }
   }
 
-  static int _getPostInterval (dynamic value){
+  static int _getPostInterval(dynamic value) {
     if (value == false || value == null) {
       return Constants.defaultPostIntervalforAds;
     } else {
@@ -144,7 +142,7 @@ class ConfigModel {
     }
   }
 
-  static int _getClickAmount (dynamic value){
+  static int _getClickAmount(dynamic value) {
     if (value == false || value == null) {
       return Constants.defaultClickAmountToShowInterstitialAds;
     } else {

@@ -1,6 +1,6 @@
 class WpConfig {
   // YOUR WEBISTE URL
-  static const String baseURL = "http://house-mag-ee9cec7c236a.herokuapp.com/";
+  static const String baseURL = "https://house-mag-ee9cec7c236a.herokuapp.com";
 
   // FEATURE IMGAE -  IF YOUR POSTS DON"T HAVE A FEATURE IMAGE
   static const String defaultFeatureImage =

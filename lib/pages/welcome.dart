@@ -47,7 +47,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 onPressed: () => _onSkipPressed(),
               ),
               Visibility(
-                visible: context.read<ConfigBloc>().configs!.multiLanguageEnabled,
+                visible:
+                    context.read<ConfigBloc>().configs!.multiLanguageEnabled,
                 child: IconButton(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.only(right: 10),
@@ -75,7 +76,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: <Widget>[
                       const Image(
                         image: AssetImage(Config.splash),
-                        height: 130,
+                        height: 100,
                       ),
                       const SizedBox(
                         height: 40,
@@ -84,27 +85,31 @@ class _WelcomePageState extends State<WelcomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'welcome-to',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium
-                                    ?.copyWith(color: Theme.of(context).colorScheme.secondary),
-                              ).tr(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              const AppLogo(
-                                height: 40,
-                                width: 160,
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Text(
+                          //       'welcome-to',
+                          //       style: Theme.of(context)
+                          //           .textTheme
+                          //           .headlineMedium
+                          //           ?.copyWith(
+                          //               color: Theme.of(context)
+                          //                   .colorScheme
+                          //                   .secondary),
+                          //     ).tr(),
+                          //     const SizedBox(
+                          //       width: 8,
+                          //     ),
+                          //     const AppLogo(
+                          //       height: 40,
+                          //       width: 160,
+                          //     ),
+                          //   ],
+                          // ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 35, right: 35, top: 15),
+                            padding: const EdgeInsets.only(
+                                left: 35, right: 35, top: 15),
                             child: Text(
                               'welcome-intro',
                               textAlign: TextAlign.center,
@@ -112,7 +117,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                   fontFamily: 'Open Sans',
                                   fontSize: 18,
                                   fontWeight: FontWeight.w400,
-                                  color: Theme.of(context).colorScheme.secondary),
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
                             ).tr(),
                           )
                         ],
@@ -129,7 +135,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 45,
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
                           backgroundColor: Theme.of(context).primaryColor,
                         ),
                         child: Row(
@@ -138,9 +145,12 @@ class _WelcomePageState extends State<WelcomePage> {
                             Text(
                               "login-to-continue",
                               style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600, color: Colors.white,),
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
                             ).tr(),
                             const SizedBox(
                               width: 15,
@@ -151,7 +161,8 @@ class _WelcomePageState extends State<WelcomePage> {
                             )
                           ],
                         ),
-                        onPressed: () => nextScreenPopupiOS(context, const LoginPage()),
+                        onPressed: () =>
+                            nextScreenPopupiOS(context, const LoginPage()),
                       ),
                     ),
                     Row(
@@ -159,7 +170,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       children: [
                         Text(
                           "no-account",
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.secondary),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary),
                         ).tr(),
                         TextButton(
                           child: Text(
@@ -167,9 +184,11 @@ class _WelcomePageState extends State<WelcomePage> {
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600, fontSize: 15),
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 15),
                           ).tr(),
-                          onPressed: () => nextScreenPopupiOS(context, const CreateAccountPage()),
+                          onPressed: () => nextScreenPopupiOS(
+                              context, const CreateAccountPage()),
                         )
                       ],
                     )

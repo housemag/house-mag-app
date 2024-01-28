@@ -105,7 +105,8 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
+        padding:
+            const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,8 +114,10 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Text(
               'login',
-              style:
-                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(fontWeight: FontWeight.w700),
             ).tr(),
             const SizedBox(
               height: 10,
@@ -127,8 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                   ?.copyWith(color: Theme.of(context).colorScheme.secondary),
             ).tr(),
             Visibility(
-              visible: configs.socialLoginsEnabled,
-              child: SocialLogins(afterSignIn: afterSignIn,)),
+                visible: configs.socialLoginsEnabled,
+                child: SocialLogins(
+                  afterSignIn: afterSignIn,
+                )),
             const SizedBox(
               height: 40,
             ),
@@ -137,8 +142,10 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text(
                   'username/email',
-                  style:
-                      Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ).tr(),
                 Container(
                   height: 50,
@@ -151,7 +158,8 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         hintText: 'enter-username-or-email'.tr(),
-                        hintStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                        hintStyle: const TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 15),
                         border: InputBorder.none,
                         prefixIcon: const Icon(
                           Icons.person,
@@ -163,8 +171,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Text(
                   'password',
-                  style:
-                      Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ).tr(),
                 Container(
                   height: 50,
@@ -177,9 +187,11 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     decoration: InputDecoration(
                         hintText: 'enter-password'.tr(),
-                        hintStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                        hintStyle: const TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 15),
                         border: InputBorder.none,
-                        suffixIcon: IconButton(icon: lockIcon, onPressed: () => _onlockPressed()),
+                        suffixIcon: IconButton(
+                            icon: lockIcon, onPressed: () => _onlockPressed()),
                         prefixIcon: const Icon(
                           Icons.lock,
                           size: 20,
@@ -197,9 +209,12 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextButton(
                     child: const Text(
                       'forgot-password',
-                      style: TextStyle(fontWeight: FontWeight.w600, color: Colors.blueAccent),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.blueAccent),
                     ).tr(),
-                    onPressed: () => nextScreeniOS(context, const ForgotPasswordPage()),
+                    onPressed: () =>
+                        nextScreeniOS(context, const ForgotPasswordPage()),
                   ),
                 ),
                 RoundedLoadingButton(
@@ -216,7 +231,9 @@ class _LoginPageState extends State<LoginPage> {
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                            ?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
                       ).tr()
                     ],
                   ),
@@ -230,10 +247,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "no-account",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: Theme.of(context).colorScheme.secondary),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.secondary),
                       ).tr(),
                       TextButton(
                           child: Text(
@@ -241,7 +256,8 @@ class _LoginPageState extends State<LoginPage> {
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600, fontSize: 15),
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 15),
                           ).tr(),
                           onPressed: () => nextScreenReplaceiOS(
                               context,
