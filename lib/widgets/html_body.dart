@@ -41,9 +41,15 @@ class HtmlBody extends StatelessWidget {
         "table": Style(
           padding: HtmlPaddings.symmetric(vertical: 10, horizontal: 10),
         ),
-        "tr": Style(padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8), border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
-        "th": Style(padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8), border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
-        "td": Style(padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8), border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
+        "tr": Style(
+            padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8),
+            border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
+        "th": Style(
+            padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8),
+            border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
+        "td": Style(
+            padding: HtmlPaddings.symmetric(vertical: 8, horizontal: 8),
+            border: Border.all(color: Colors.grey.shade300, strokeAlign: 0.1)),
         "body": Style(
             margin: Margins.zero,
             padding: HtmlPaddings.zero,
@@ -84,11 +90,13 @@ class HtmlBody extends StatelessWidget {
               final String source = eContext.attributes['src'].toString();
               if (isIframeVideoEnabled == false) return Container();
               if (source.contains('youtu')) {
-                return VideoPlayerWidget(videoUrl: source, videoType: 'youtube');
+                return VideoPlayerWidget(
+                    videoUrl: source, videoType: 'youtube');
               } else if (source.contains('vimeo')) {
                 final String videoId = AppService.getVimeoId(source);
                 return VideoPlayerWidget(videoUrl: videoId, videoType: 'vimeo');
-              } else if (configs.socialEmbedPostsEnabled && source.contains('facebook.com')) {
+              } else if (configs.socialEmbedPostsEnabled &&
+                  source.contains('facebook.com')) {
                 return SocialEmbed(
                   data: source,
                   embedPlatform: 'facebook',
@@ -101,7 +109,8 @@ class HtmlBody extends StatelessWidget {
             builder: (ExtensionContext eContext) {
               final String videoSource = eContext.attributes['src'].toString();
               if (isVideoEnabled == false) return Container();
-              return VideoPlayerWidget(videoUrl: videoSource, videoType: 'network');
+              return VideoPlayerWidget(
+                  videoUrl: videoSource, videoType: 'network');
             }),
         TagExtension(
             tagsToExtend: {"img"},
@@ -109,10 +118,12 @@ class HtmlBody extends StatelessWidget {
               String imageUrl = eContext.attributes['src'].toString();
               if (isimageEnabled == false) return Container();
               return InkWell(
-                  onTap: () => nextScreenPopupiOS(context, FullScreenImage(imageUrl: imageUrl)),
+                  onTap: () => nextScreenPopupiOS(
+                      context, FullScreenImage(imageUrl: imageUrl)),
                   child: CachedNetworkImage(
                     imageUrl: imageUrl,
-                    placeholder: (context, url) => const LoadingIndicatorWidget(),
+                    placeholder: (context, url) =>
+                        const LoadingIndicatorWidget(),
                   ));
             }),
       ],

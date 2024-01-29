@@ -46,19 +46,19 @@ class _WelcomePageState extends State<WelcomePage> {
                 ).tr(),
                 onPressed: () => _onSkipPressed(),
               ),
-              Visibility(
-                visible:
-                    context.read<ConfigBloc>().configs!.multiLanguageEnabled,
-                child: IconButton(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.only(right: 10),
-                  iconSize: 18,
-                  icon: const Icon(Icons.translate),
-                  onPressed: () {
-                    nextScreenPopupiOS(context, const LanguagePopup());
-                  },
-                ),
-              ),
+              // Visibility(
+              //   visible:
+              //       context.read<ConfigBloc>().configs!.multiLanguageEnabled,
+              //   child: IconButton(
+              //     alignment: Alignment.center,
+              //     padding: const EdgeInsets.only(right: 10),
+              //     iconSize: 18,
+              //     icon: const Icon(Icons.translate),
+              //     onPressed: () {
+              //       nextScreenPopupiOS(context, const LanguagePopup());
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),

@@ -23,8 +23,8 @@ class SettingPage extends StatefulWidget {
   State<SettingPage> createState() => _SettingPageState();
 }
 
-class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClientMixin {
-  
+class _SettingPageState extends State<SettingPage>
+    with AutomaticKeepAliveClientMixin {
   void openLicenceDialog() {
     final SettingsBloc sb = Provider.of<SettingsBloc>(context, listen: false);
     showDialog(
@@ -57,8 +57,10 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
           backgroundColor: Theme.of(context).primaryColor,
           flexibleSpace: FlexibleSpaceBar(
             centerTitle: false,
-            title: const Text('settings', style: TextStyle(color: Colors.white)).tr(),
-            titlePadding: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+            title: const Text('settings', style: TextStyle(color: Colors.white))
+                .tr(),
+            titlePadding:
+                const EdgeInsets.only(left: 20, bottom: 20, right: 20),
           ),
         ),
         SliverToBoxAdapter(
@@ -71,22 +73,31 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                 Visibility(
                   visible: configs.loginEnabled,
                   child: Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                      decoration: BoxDecoration(color: Theme.of(context).colorScheme.onPrimary),
-                      child: !ub.isSignedIn ? const GuestUserUI() : const UserUI()),
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 20, top: 10, bottom: 10),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.onPrimary),
+                      child: !ub.isSignedIn
+                          ? const GuestUserUI()
+                          : const UserUI()),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.onPrimary),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onPrimary),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'general-settings',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: -0.5, wordSpacing: 1),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.5,
+                            wordSpacing: 1),
                       ).tr(),
                       const SizedBox(height: 15),
                       ListTile(
@@ -102,13 +113,18 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'get-notifications',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: Switch.adaptive(
                             activeColor: Theme.of(context).primaryColor,
                             inactiveThumbColor: Colors.grey,
                             value: context.watch<NotificationBloc>().subscribed,
-                            onChanged: (bool value) => context.read<NotificationBloc>().handleSubscription(context, value)),
+                            onChanged: (bool value) => context
+                                .read<NotificationBloc>()
+                                .handleSubscription(context, value)),
                       ),
                       const _Divider(),
                       ListTile(
@@ -124,7 +140,10 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'dark-mode',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: Switch.adaptive(
                             activeColor: Theme.of(context).primaryColor,
@@ -152,10 +171,15 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                               ),
                               title: Text(
                                 'language',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => nextScreenPopupiOS(context, const LanguagePopup()),
+                              onTap: () => nextScreenPopupiOS(
+                                  context, const LanguagePopup()),
                             ),
                           ],
                         ),
@@ -168,13 +192,18 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                 ),
                 Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.onPrimary),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onPrimary),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'about-app',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: -0.7, wordSpacing: 1),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.7,
+                            wordSpacing: 1),
                       ).tr(),
                       const SizedBox(height: 15),
                       ListTile(
@@ -190,10 +219,14 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'privacy-policy',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: const Icon(Feather.chevron_right),
-                        onTap: () => AppService().openLinkWithCustomTab(context, configs.priivacyPolicyUrl),
+                        onTap: () => AppService().openLinkWithCustomTab(
+                            context, configs.priivacyPolicyUrl),
                       ),
                       const _Divider(),
                       ListTile(
@@ -209,7 +242,10 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'rate-app',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: const Icon(Feather.chevron_right),
                         onTap: () => AppService().launchAppReview(context),
@@ -222,13 +258,18 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                 ),
                 Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.onPrimary),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onPrimary),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'social-settings',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: -0.7, wordSpacing: 1),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.7,
+                            wordSpacing: 1),
                       ).tr(),
                       const SizedBox(height: 15),
                       ListTile(
@@ -244,10 +285,14 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'contact-us',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: const Icon(Feather.chevron_right),
-                        onTap: () => AppService().openEmailSupport(context, configs.supportEmail),
+                        onTap: () => AppService()
+                            .openEmailSupport(context, configs.supportEmail),
                       ),
                       const _Divider(),
                       ListTile(
@@ -263,10 +308,14 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                         ),
                         title: Text(
                           'our-website',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary),
                         ).tr(),
                         trailing: const Icon(Feather.chevron_right),
-                        onTap: () => AppService().openLinkWithCustomTab(context, WpConfig.baseURL),
+                        onTap: () => AppService()
+                            .openLinkWithCustomTab(context, WpConfig.baseURL),
                       ),
                       Visibility(
                         visible: configs.fbUrl != '',
@@ -286,10 +335,15 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                               ),
                               title: Text(
                                 'facebook',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => AppService().openLink(context, configs.fbUrl),
+                              onTap: () =>
+                                  AppService().openLink(context, configs.fbUrl),
                             ),
                           ],
                         ),
@@ -312,10 +366,15 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                               ),
                               title: Text(
                                 'youtube',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => AppService().openLink(context, configs.youtubeUrl),
+                              onTap: () => AppService()
+                                  .openLink(context, configs.youtubeUrl),
                             ),
                           ],
                         ),
@@ -338,10 +397,15 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                               ),
                               title: Text(
                                 'instagram',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => AppService().openLink(context, configs.instagramUrl),
+                              onTap: () => AppService()
+                                  .openLink(context, configs.instagramUrl),
                             ),
                           ],
                         ),
@@ -363,11 +427,16 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                                 ),
                               ),
                               title: Text(
-                                'twitter',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                'Twitter',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => AppService().openLink(context, configs.twitterUrl),
+                              onTap: () => AppService()
+                                  .openLink(context, configs.twitterUrl),
                             ),
                           ],
                         ),
@@ -383,17 +452,22 @@ class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClient
                                 backgroundColor: Colors.black,
                                 radius: 18,
                                 child: Icon(
-                                  Feather.at_sign,
+                                  FlutterIcons.soundcloud_ent,
                                   size: 18,
                                   color: Colors.white,
                                 ),
                               ),
                               title: Text(
-                                'threads',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                                'Soundcloud',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ).tr(),
                               trailing: const Icon(Feather.chevron_right),
-                              onTap: () => AppService().openLink(context, configs.threadsUrl),
+                              onTap: () => AppService()
+                                  .openLink(context, configs.threadsUrl),
                             ),
                           ],
                         ),
@@ -448,7 +522,10 @@ class _SecurityOption extends StatelessWidget {
         ),
         title: Text(
           'security',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context).colorScheme.primary),
         ).tr(),
         trailing: const Icon(Feather.chevron_right),
         onTap: () => nextScreen(context, const SecurityPage()),
@@ -493,7 +570,10 @@ class GuestUserUI extends StatelessWidget {
           ),
           title: Text(
             'login',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.primary),
           ).tr(),
           trailing: const Icon(Feather.chevron_right),
           onTap: () => nextScreenPopupiOS(
@@ -528,7 +608,10 @@ class UserUI extends StatelessWidget {
           ),
           title: Text(
             ub.name!,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.primary),
           ),
         ),
         const _Divider(),
@@ -545,7 +628,10 @@ class UserUI extends StatelessWidget {
           ),
           title: Text(
             ub.email!,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.primary),
           ),
         ),
         const _Divider(),
@@ -562,7 +648,10 @@ class UserUI extends StatelessWidget {
           ),
           title: Text(
             'logout',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.primary),
           ).tr(),
           trailing: const Icon(Feather.chevron_right),
           onTap: () => openLogoutDialog(context),
@@ -599,6 +688,7 @@ class UserUI extends StatelessWidget {
 
   Future _handleLogout(context) async {
     final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
-    await ub.userSignout().then((value) => nextScreenCloseOthersAnimation(context, const WelcomePage()));
+    await ub.userSignout().then((value) =>
+        nextScreenCloseOthersAnimation(context, const WelcomePage()));
   }
 }

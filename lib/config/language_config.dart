@@ -6,18 +6,18 @@ class LanguageConfig {
   static const Locale startLocale = Locale('pt', 'BR');
 
   //Language if any error happens
-  static const Locale fallbackLocale = Locale('en', 'US');
+  static const Locale fallbackLocale = Locale('pt', 'BR');
 
   // Languages
   static const Map<String, List<String>> languages = {
     //language_name : [language_code, country_code(Capital format)]
     "Português": ['pt', 'BR'],
-    "English": ['en', 'US'],
-    "Spanish": ['es', 'ES'],
-    "French": ['fr', 'FR'],
-    "Hindi": ['hi', 'IN'],
-    "Arabic": ['ar', 'SA'],
-    "Bangla": ['bn', 'BD'],
+    // "English": ['en', 'US'],
+    // "Spanish": ['es', 'ES'],
+    // "French": ['fr', 'FR'],
+    // "Hindi": ['hi', 'IN'],
+    // "Arabic": ['ar', 'SA'],
+    // "Bangla": ['bn', 'BD'],
   };
 
   // Local Messages for time ago
@@ -27,12 +27,13 @@ class LanguageConfig {
         .toList();
 
     //must be align with languages
-    timeago.setLocaleMessages(localesString[0], timeago.EnMessages());
-    timeago.setLocaleMessages(localesString[1], timeago.EsMessages());
-    timeago.setLocaleMessages(localesString[2], timeago.FrMessages());
-    timeago.setLocaleMessages(localesString[3], timeago.HiMessages());
-    timeago.setLocaleMessages(localesString[4], timeago.ArMessages());
-    timeago.setLocaleMessages(localesString[5], timeago.EnMessages());
+    timeago.setLocaleMessages(localesString[0], timeago.PtBrMessages());
+    // timeago.setLocaleMessages(localesString[0], timeago.EnMessages());
+    // timeago.setLocaleMessages(localesString[1], timeago.EsMessages());
+    // timeago.setLocaleMessages(localesString[2], timeago.FrMessages());
+    // timeago.setLocaleMessages(localesString[3], timeago.HiMessages());
+    // timeago.setLocaleMessages(localesString[4], timeago.ArMessages());
+    // timeago.setLocaleMessages(localesString[5], timeago.EnMessages());
   }
 
   // Don't edit this

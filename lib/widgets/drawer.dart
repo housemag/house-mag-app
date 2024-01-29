@@ -7,6 +7,7 @@ import 'package:wordpress_app/config/wp_config.dart';
 import 'package:wordpress_app/pages/category_based_articles.dart';
 import 'package:wordpress_app/services/app_service.dart';
 import 'package:wordpress_app/utils/next_screen.dart';
+import 'package:wordpress_app/utils/string_utils.dart';
 import 'package:wordpress_app/widgets/app_logo.dart';
 import '../blocs/category_bloc.dart';
 import '../models/category.dart';
@@ -21,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
     final d = context.watch<CategoryBloc>().categoryData;
     final configs = context.read<ConfigBloc>().configs!;
 
-    final  titleTextStyle = Theme.of(context).textTheme.titleMedium;
+    final titleTextStyle = Theme.of(context).textTheme.titleMedium;
 
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -60,13 +61,11 @@ class CustomDrawer extends StatelessWidget {
                       size: 22,
                     ),
                     horizontalTitleGap: 10,
-                    title: Text(
-                      'contact-us',
-                      style: titleTextStyle
-                    ).tr(),
+                    title: Text('contact-us', style: titleTextStyle).tr(),
                     onTap: () {
                       Navigator.pop(context);
-                      AppService().openEmailSupport(context, configs.supportEmail);
+                      AppService()
+                          .openEmailSupport(context, configs.supportEmail);
                     },
                   ),
                   ListTile(
@@ -76,13 +75,11 @@ class CustomDrawer extends StatelessWidget {
                       size: 22,
                     ),
                     horizontalTitleGap: 10,
-                    title: Text(
-                      'our-website',
-                      style: titleTextStyle
-                    ).tr(),
+                    title: Text('our-website', style: titleTextStyle).tr(),
                     onTap: () {
                       Navigator.pop(context);
-                      AppService().openLinkWithCustomTab(context, WpConfig.baseURL);
+                      AppService()
+                          .openLinkWithCustomTab(context, WpConfig.baseURL);
                     },
                   ),
                   Visibility(
@@ -94,10 +91,7 @@ class CustomDrawer extends StatelessWidget {
                         size: 22,
                       ),
                       horizontalTitleGap: 10,
-                      title: Text(
-                        'facebook',
-                        style: titleTextStyle
-                      ).tr(),
+                      title: Text('facebook', style: titleTextStyle).tr(),
                       onTap: () {
                         Navigator.pop(context);
                         AppService().openLink(context, configs.fbUrl);
@@ -113,10 +107,7 @@ class CustomDrawer extends StatelessWidget {
                         size: 22,
                       ),
                       horizontalTitleGap: 10,
-                      title: Text(
-                        'youtube',
-                        style: titleTextStyle
-                      ).tr(),
+                      title: Text('youtube', style: titleTextStyle).tr(),
                       onTap: () {
                         Navigator.pop(context);
                         AppService().openLink(context, configs.youtubeUrl);
@@ -132,10 +123,7 @@ class CustomDrawer extends StatelessWidget {
                         size: 22,
                       ),
                       horizontalTitleGap: 10,
-                      title: Text(
-                        'twitter',
-                        style: titleTextStyle
-                      ).tr(),
+                      title: Text('Twitter', style: titleTextStyle).tr(),
                       onTap: () {
                         Navigator.pop(context);
                         AppService().openLink(context, configs.twitterUrl);
@@ -151,10 +139,7 @@ class CustomDrawer extends StatelessWidget {
                         size: 22,
                       ),
                       horizontalTitleGap: 10,
-                      title: Text(
-                        'instagram',
-                        style: titleTextStyle
-                      ).tr(),
+                      title: Text('Instagram', style: titleTextStyle).tr(),
                       onTap: () {
                         Navigator.pop(context);
                         AppService().openLink(context, configs.instagramUrl);
@@ -166,14 +151,11 @@ class CustomDrawer extends StatelessWidget {
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       leading: const Icon(
-                        Feather.at_sign,
+                        FlutterIcons.soundcloud_ent,
                         size: 22,
                       ),
                       horizontalTitleGap: 10,
-                      title: Text(
-                        'threads',
-                        style: titleTextStyle
-                      ).tr(),
+                      title: Text('Soundcloud', style: titleTextStyle).tr(),
                       onTap: () {
                         Navigator.pop(context);
                         AppService().openLink(context, configs.threadsUrl);
@@ -233,12 +215,14 @@ class _Categories extends StatelessWidget {
             tilePadding: const EdgeInsets.only(left: 20, right: 15),
             leading: CircleAvatar(
               radius: 15,
-              backgroundImage: CachedNetworkImageProvider(category.categoryThumbnail!),
+              backgroundImage:
+                  CachedNetworkImageProvider(category.categoryThumbnail!),
             ),
             title: InkWell(
-              child: Text(category.name.toString().toUpperCase(),
+              child: Text(category.name.toString(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.secondary)),
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).colorScheme.secondary)),
               onTap: () {
                 Navigator.pop(context);
                 nextScreen(
@@ -262,7 +246,10 @@ class _Categories extends StatelessWidget {
                     return ListTile(
                       title: Text(
                         subCategory.name!,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
                               fontWeight: FontWeight.w600,
                               color: Theme.of(context).colorScheme.secondary,
                             ),
