@@ -1,6 +1,6 @@
 class WpConfig {
   // YOUR WEBISTE URL
-  static const String baseURL = "http://44.208.25.48";
+  static const String baseURL = "http://54.209.244.162";
 
   // FEATURE IMGAE -  IF YOUR POSTS DON"T HAVE A FEATURE IMAGE
   static const String defaultFeatureImage =
@@ -8,5 +8,5 @@ class WpConfig {
 
   // FEATURE CATEGORY IMGAE -  IF YOU HAVEN'T DEFINE A COVER IMAGE FOR A CATEGORY IN THE LIST BELOW
   static const String defaultCategoryThumbnail =
-      "https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmFuZG9tfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
+      "https://ps.w.org/gazchaps-woocommerce-auto-category-product-thumbnails/assets/icon-128x128.png?rev=1848416";
 }

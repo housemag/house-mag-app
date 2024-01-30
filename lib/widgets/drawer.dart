@@ -213,11 +213,6 @@ class _Categories extends StatelessWidget {
 
         return ExpansionTile(
             tilePadding: const EdgeInsets.only(left: 20, right: 15),
-            leading: CircleAvatar(
-              radius: 15,
-              backgroundImage:
-                  CachedNetworkImageProvider(category.categoryThumbnail!),
-            ),
             title: InkWell(
               child: Text(category.name.toString(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -233,43 +228,9 @@ class _Categories extends StatelessWidget {
                 );
               },
             ),
+            trailing: const SizedBox(),
             initiallyExpanded: false,
-            childrenPadding: const EdgeInsets.only(left: 20, right: 15),
-            children: <Widget>[
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: categories.length,
-                padding: const EdgeInsets.all(0),
-                itemBuilder: (BuildContext context1, int index1) {
-                  Category subCategory = categories[index1];
-                  if (subCategory.parent == categories[index].id) {
-                    return ListTile(
-                      title: Text(
-                        subCategory.name!,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                      horizontalTitleGap: 0,
-                      leading: const Icon(Feather.chevron_right),
-                      onTap: () {
-                        Navigator.pop(context);
-                        nextScreen(
-                          context,
-                          CategoryBasedArticles(category: subCategory),
-                        );
-                      },
-                    );
-                  }
-
-                  return Container();
-                },
-              ),
-            ]);
+            childrenPadding: const EdgeInsets.only(left: 20, right: 15));
       },
     );
   }

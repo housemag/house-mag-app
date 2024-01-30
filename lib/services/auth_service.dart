@@ -16,13 +16,16 @@ class AuthService {
   static final GoogleSignIn googleSignIn = GoogleSignIn();
   static final FacebookAuth facebookAuth = FacebookAuth.instance;
 
-  static Future<UserModel?> loginWithEmail(String userName, String password) async {
+  static Future<UserModel?> loginWithEmail(
+      String userName, String password) async {
     Map<String, String> requestHeader = {
       'Content-type': 'application/x-www-form-urlencoded',
     };
 
-    var response = await client.post(Uri.parse("${WpConfig.baseURL}/wp-json/jwt-auth/v1/token"),
-        headers: requestHeader, body: {"username": userName, "password": password});
+    var response = await client.post(
+        Uri.parse("${WpConfig.baseURL}/wp-json/jwt-auth/v1/token"),
+        headers: requestHeader,
+        body: {"username": userName, "password": password});
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
       UserModel userModel = UserModel(
@@ -108,11 +111,14 @@ class AuthService {
     );
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body) as Map<String, dynamic>;
-      userModel = UserModel(userName: json['username'], password: '', emailId: json['email'], token: '');
+      userModel = UserModel(
+          userName: json['username'],
+          password: '',
+          emailId: json['email'],
+          token: '');
     }
     return userModel;
   }
-
 
   static Future<UserModel?> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -146,9 +152,11 @@ class AuthService {
   }
 
   static String generateNonce([int length = 32]) {
-    const charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    const charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();
-    return List.generate(length, (_) => charset[random.nextInt(charset.length)]).join();
+    return List.generate(length, (_) => charset[random.nextInt(charset.length)])
+        .join();
   }
 
   /// Returns the sha256 hash of [input] in hex notation.
@@ -174,7 +182,8 @@ class AuthService {
       rawNonce: rawNonce,
     );
 
-    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+    final UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(oauthCredential);
     if (userCredential.user != null && userCredential.user!.email != null) {
       final String email = userCredential.user!.email!;
       final String username = email.split("@").first;
