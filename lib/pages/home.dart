@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wordpress_app/blocs/ads_bloc.dart';
 import 'package:wordpress_app/blocs/category_bloc.dart';
 import 'package:wordpress_app/blocs/config_bloc.dart';
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   final List<IconData> _iconListWithVideoTab = [
     Feather.home,
     Feather.youtube,
-    // Feather.search,
+    Feather.play,
     Feather.heart,
     Feather.user
   ];
@@ -110,12 +111,23 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    _pageController!.animateToPage(index,
-        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+  void onItemTapped(int index) async {
+    final Uri _url = Uri.parse('https://open.spotify.com/user/housemagplay');
+    if (index == 2) {
+      await launchUrl(_url);
+    } else if (index == 3) {
+      setState(() {
+        _selectedIndex = index;
+      });
+      _pageController!.animateToPage(index - 1,
+          duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+      _pageController!.animateToPage(index,
+          duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+    }
   }
 
   @override

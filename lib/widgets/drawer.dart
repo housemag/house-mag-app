@@ -161,6 +161,23 @@ class CustomDrawer extends StatelessWidget {
                         AppService().openLink(context, configs.threadsUrl);
                       },
                     ),
+                  ),
+                  Visibility(
+                    visible: configs.threadsUrl != '',
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(0),
+                      leading: const Icon(
+                        FlutterIcons.spotify_ent,
+                        size: 22,
+                      ),
+                      horizontalTitleGap: 10,
+                      title: Text('Spotify', style: titleTextStyle).tr(),
+                      onTap: () {
+                        Navigator.pop(context);
+                        AppService().openLink(context,
+                            'https://open.spotify.com/playlist/3nOJGvdsat9NSfYWfJhyv6');
+                      },
+                    ),
                   )
                 ],
               ),

@@ -1,11 +1,11 @@
 {
     "intro": {
         "title-1": "Explorar as últimas notícias",
-        "description-1": "Explore as últimas notícias e eventos que acontecem no mundo em minutos...",
+        "description-1": "Explore as últimas notícias sobre as principais músicas eletrônicas do mundo",
         "title-2": "Seja notificado primeiro",
-        "description-2": "Inscreva-se e seja notificado sobre todos os nossos artigos e compartilhe com seus amigos...",
+        "description-2": "Atuando há 15 anos no setor gerando conteúdo, eventos e negócios de forma rápida",
         "title-3": "Salve e compartilhe seus conteúdos favoritos facilmente",
-        "description-3": "Marque, curta e comente seus artigos favoritos e compartilhe nas redes sociais..."
+        "description-3": "Liberdade, respeito, amor à música de forma mais acessível e de fácil manuseio das informações"
     },
     "welcome-intro": "Explore as últimas notícias e eventos que acontecem no mundo em minutos..",
     "welcome-to": "Bem-vindo a",
@@ -22,8 +22,8 @@
     "enter-email": "Digite seu e-mail",
     "username": "Nome de usuário",
     "enter-username": "Digite seu nome de usuário",
-    "username/email": "Nome de usuário ou e-mail",
-    "enter-username-or-email": "Digite seu nome de usuário ou e-mail",
+    "username/email": "E-mail",
+    "enter-username-or-email": "Digite seu E-mail",
     "password": "Senha",
     "enter-password": "Digite a senha",
     "search-contents": "Pesquisar notícias",

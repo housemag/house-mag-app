@@ -23,11 +23,14 @@ class IntroPage extends StatelessWidget {
         titlePadding: EdgeInsets.only(left: 20, right: 20),
         bodyPadding: EdgeInsets.only(left: 20, right: 20, top: 20));
 
-    const TextStyle titletextStyle =
-        TextStyle(letterSpacing: -0.5, wordSpacing: 5, fontSize: 22, fontWeight: FontWeight.bold);
+    const TextStyle titletextStyle = TextStyle(
+        letterSpacing: -0.5,
+        wordSpacing: 5,
+        fontSize: 22,
+        fontWeight: FontWeight.bold);
 
-    const TextStyle bodytextStyle =
-        TextStyle(color: Colors.blueGrey, fontSize: 18, fontWeight: FontWeight.normal);
+    const TextStyle bodytextStyle = TextStyle(
+        color: Colors.blueGrey, fontSize: 18, fontWeight: FontWeight.normal);
 
     final PageViewModel page1 = PageViewModel(
         decoration: pageDecoration,
@@ -48,7 +51,10 @@ class IntroPage extends StatelessWidget {
         image: Container(
           padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
           alignment: Alignment.center,
-          child: SvgPicture.asset(Config.introImage1),
+          child: SvgPicture.asset(
+            Config.introImage1,
+            height: MediaQuery.sizeOf(context).height * 0.3,
+          ),
         ));
 
     final PageViewModel page2 = PageViewModel(
@@ -70,7 +76,10 @@ class IntroPage extends StatelessWidget {
         image: Container(
           padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
           alignment: Alignment.center,
-          child: SvgPicture.asset(Config.introImage2),
+          child: SvgPicture.asset(
+            Config.introImage2,
+            height: MediaQuery.sizeOf(context).height * 0.3,
+          ),
         ));
 
     final PageViewModel page3 = PageViewModel(
@@ -92,7 +101,10 @@ class IntroPage extends StatelessWidget {
         image: Container(
           padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
           alignment: Alignment.center,
-          child: SvgPicture.asset(Config.introImage3),
+          child: SvgPicture.asset(
+            Config.introImage3,
+            height: MediaQuery.sizeOf(context).height * 0.3,
+          ),
         ));
 
     return Scaffold(
@@ -108,9 +120,11 @@ class IntroPage extends StatelessWidget {
         showBackButton: false,
         //rtl: true, // Display as right-to-left
         back: const Icon(Icons.arrow_back),
-        skip: const Text('Pular', style: TextStyle(fontWeight: FontWeight.w600)),
+        skip:
+            const Text('Pular', style: TextStyle(fontWeight: FontWeight.w600)),
         next: const Icon(Icons.arrow_forward),
-        done: const Text('Concluído', style: TextStyle(fontWeight: FontWeight.w600)),
+        done: const Text('Concluído',
+            style: TextStyle(fontWeight: FontWeight.w600)),
         curve: Curves.fastLinearToSlowEaseIn,
         controlsMargin: const EdgeInsets.all(16),
         controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),

@@ -472,6 +472,37 @@ class _SettingPageState extends State<SettingPage>
                           ],
                         ),
                       ),
+                      Visibility(
+                        visible: configs.threadsUrl != '',
+                        child: Column(
+                          children: [
+                            const _Divider(),
+                            ListTile(
+                              contentPadding: const EdgeInsets.all(0),
+                              leading: const CircleAvatar(
+                                backgroundColor: Colors.black,
+                                radius: 18,
+                                child: Icon(
+                                  FlutterIcons.spotify_ent,
+                                  size: 18,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              title: Text(
+                                'Spotify',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ).tr(),
+                              trailing: const Icon(Feather.chevron_right),
+                              onTap: () => AppService().openLink(context,
+                                  'https://open.spotify.com/playlist/3nOJGvdsat9NSfYWfJhyv6'),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
