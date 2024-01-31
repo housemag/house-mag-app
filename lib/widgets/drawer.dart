@@ -43,10 +43,10 @@ class CustomDrawer extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 8),
                     child: const AppLogo(height: 35),
                   ),
-                  Text(
-                    'app-version',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ).tr(args: [context.read<SettingsBloc>().appVersion])
+                  // Text(
+                  //   'app-version',
+                  //   style: Theme.of(context).textTheme.titleMedium,
+                  // ).tr(args: [context.read<SettingsBloc>().appVersion])
                 ],
               ),
             ),

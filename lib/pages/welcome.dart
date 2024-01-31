@@ -41,7 +41,7 @@ class _WelcomePageState extends State<WelcomePage> {
               TextButton(
                 style: const ButtonStyle(),
                 child: const Text(
-                  'skip',
+                  'Pular',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 ).tr(),
                 onPressed: () => _onSkipPressed(),

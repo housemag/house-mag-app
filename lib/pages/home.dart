@@ -9,12 +9,12 @@ import 'package:wordpress_app/blocs/notification_bloc.dart';
 import 'package:wordpress_app/blocs/settings_bloc.dart';
 import 'package:wordpress_app/blocs/user_bloc.dart';
 import 'package:wordpress_app/config/ad_config.dart';
+import 'package:wordpress_app/pages/search.dart';
 import 'package:wordpress_app/services/app_links_service.dart';
 import 'package:wordpress_app/services/notification_service.dart';
 import 'package:wordpress_app/tabs/home_tab.dart';
 import 'package:wordpress_app/tabs/home_tab_without_tabs.dart';
 import 'package:wordpress_app/tabs/profile_tab.dart';
-import 'package:wordpress_app/tabs/search_tab.dart';
 import 'package:wordpress_app/tabs/video_tab.dart';
 import '../blocs/featured_bloc.dart';
 import '../blocs/latest_articles_bloc.dart';
@@ -33,25 +33,25 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   PageController? _pageController;
 
-  final List<IconData> _iconList = [Feather.home, Feather.search, Feather.heart, Feather.user];
+  final List<IconData> _iconList = [Feather.home, Feather.heart, Feather.user];
 
   final List<IconData> _iconListWithVideoTab = [
     Feather.home,
     Feather.youtube,
-    Feather.search,
+    // Feather.search,
     Feather.heart,
     Feather.user
   ];
 
   final List<Widget> _tabs = [
-    const SearchTab(),
+    // const SearchPage(),
     const BookmarkTab(),
     const SettingPage(),
   ];
 
   final List<Widget> _tabsWithVideo = [
     const VideoTab(),
-    const SearchTab(),
+    // const SearchPage(),
     const BookmarkTab(),
     const SettingPage()
   ];
@@ -64,7 +64,9 @@ class _HomePageState extends State<HomePage> {
     final sb = context.read<SettingsBloc>();
     final configs = context.read<ConfigBloc>().configs!;
 
-    NotificationService().initFirebasePushNotification(context).then((_) => nb.checkSubscription());
+    NotificationService()
+        .initFirebasePushNotification(context)
+        .then((_) => nb.checkSubscription());
     await AppLinksService().initUniLinks(context);
     cb.fetchData(configs.blockedCategories);
     sb.getPackageInfo();
@@ -112,8 +114,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
-    _pageController!
-        .animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+    _pageController!.animateToPage(index,
+        duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
 
   @override
@@ -127,7 +129,9 @@ class _HomePageState extends State<HomePage> {
         controller: _pageController,
         children: <Widget>[
           cb.configs!.homeCategories.isEmpty
-              ? HomeTabWithoutTabs(configs: cb.configs!,)
+              ? HomeTabWithoutTabs(
+                  configs: cb.configs!,
+                )
               : HomeTab(
                   configs: cb.configs!,
                   homeCategories: cb.homeCategories,
@@ -147,19 +151,23 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  List<Tab> _categoryTabs (ConfigBloc cb){
-    return cb.homeCategories.map((e) => Tab(text: e.name)).toList()..insert(0, Tab(text: 'explore'.tr()));
+  List<Tab> _categoryTabs(ConfigBloc cb) {
+    return cb.homeCategories.map((e) => Tab(text: e.name)).toList()
+      ..insert(0, Tab(text: 'explore'.tr()));
   }
 
-  AnimatedBottomNavigationBar _bottonNavigationBar(BuildContext context, ConfigBloc cb) {
+  AnimatedBottomNavigationBar _bottonNavigationBar(
+      BuildContext context, ConfigBloc cb) {
     return AnimatedBottomNavigationBar(
       icons: cb.configs!.videoTabEnabled ? _iconListWithVideoTab : _iconList,
       gapLocation: GapLocation.none,
       activeIndex: _selectedIndex,
       iconSize: 22,
-      backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+      backgroundColor:
+          Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       activeColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
-      inactiveColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+      inactiveColor:
+          Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
       splashColor: Theme.of(context).primaryColor,
       onTap: (index) => onItemTapped(index),
     );

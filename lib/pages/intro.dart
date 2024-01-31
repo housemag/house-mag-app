@@ -108,9 +108,9 @@ class IntroPage extends StatelessWidget {
         showBackButton: false,
         //rtl: true, // Display as right-to-left
         back: const Icon(Icons.arrow_back),
-        skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
+        skip: const Text('Pular', style: TextStyle(fontWeight: FontWeight.w600)),
         next: const Icon(Icons.arrow_forward),
-        done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+        done: const Text('Concluído', style: TextStyle(fontWeight: FontWeight.w600)),
         curve: Curves.fastLinearToSlowEaseIn,
         controlsMargin: const EdgeInsets.all(16),
         controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),

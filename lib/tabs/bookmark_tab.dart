@@ -15,7 +15,8 @@ class BookmarkTab extends StatefulWidget {
   State<BookmarkTab> createState() => _BookmarkTabState();
 }
 
-class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClientMixin {
+class _BookmarkTabState extends State<BookmarkTab>
+    with AutomaticKeepAliveClientMixin {
   void _openCLearAllDialog() {
     showModalBottomSheet(
         elevation: 2,
@@ -23,7 +24,9 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
         isDismissible: true,
         isScrollControlled: false,
         backgroundColor: Theme.of(context).colorScheme.background,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         context: context,
         builder: (context) {
           return Container(
@@ -37,7 +40,11 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
                 const Text(
                   'clear-bookmark-dialog',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: -0.6, wordSpacing: 1),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.6,
+                      wordSpacing: 1),
                 ).tr(),
                 const SizedBox(
                   height: 20,
@@ -48,16 +55,20 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
                   children: [
                     TextButton(
                       style: TextButton.styleFrom(
-                        minimumSize: const Size(100, 50),
-                        backgroundColor: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+                          minimumSize: const Size(100, 50),
+                          backgroundColor: Theme.of(context).primaryColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
                       onPressed: () {
                         BookmarkService().clearBookmarkList();
                         Navigator.pop(context);
                       },
                       child: const Text(
-                        'Yes',
-                        style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w600),
+                        'Sim',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     const SizedBox(
@@ -65,14 +76,17 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                        minimumSize: const Size(100, 50),
-                        backgroundColor: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
-                      ),
+                          minimumSize: const Size(100, 50),
+                          backgroundColor: Theme.of(context).primaryColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
                       onPressed: () => Navigator.pop(context),
                       child: const Text(
-                        'Cancel',
-                        style: TextStyle(fontSize: 17, color: Colors.white, fontWeight: FontWeight.w600),
+                        'Cancelar',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
                       ),
                     )
                   ],
@@ -94,7 +108,8 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
         actions: [
           TextButton(
             onPressed: () => _openCLearAllDialog(),
-            style: TextButton.styleFrom(padding: const EdgeInsets.only(right: 15, left: 15)),
+            style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(right: 15, left: 15)),
             child: const Text('clear-all').tr(),
           ),
         ],
@@ -121,8 +136,11 @@ class _BookmarkTabState extends State<BookmarkTab> with AutomaticKeepAliveClient
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       final keys = bookmarkList.keys;
-                      final jsonList = keys.map((e) => bookmarkList.get(e)).toList();
-                      final List<Article> articles = jsonList.map((e) => Article.fromJsonLocal(e)).toList();
+                      final jsonList =
+                          keys.map((e) => bookmarkList.get(e)).toList();
+                      final List<Article> articles = jsonList
+                          .map((e) => Article.fromJsonLocal(e))
+                          .toList();
                       final Article article = articles[index];
                       return BookmarkCard(article: article);
                     },

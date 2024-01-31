@@ -48,23 +48,23 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     }
   }
 
-  Future _handleCreateUser() async { 
+  Future _handleCreateUser() async {
     final UserBloc ub = Provider.of<UserBloc>(context, listen: false);
     if (userNameCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(context, 'Username is required');
+      openSnacbar(context, 'Usuário é obrigatório');
     } else if (emailCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(context, 'Email is required');
-    } else if(AppService.isEmailValid(emailCtrl.text) == false){
+      openSnacbar(context, 'E-mail é obrigatório');
+    } else if (AppService.isEmailValid(emailCtrl.text) == false) {
       _btnController.reset();
-      openSnacbar(context, 'Email is invalid');
+      openSnacbar(context, 'E-mail é inválido');
     } else if (passwordCtrl.text.isEmpty) {
       _btnController.reset();
-      openSnacbar(context, 'Password is required');
+      openSnacbar(context, 'Senha é obrigatório');
     } else if (_checkboxTicked == false) {
       _btnController.reset();
-      openSnacbar(context, 'Please accept the terms & conditions to continue');
+      openSnacbar(context, 'Aceite os termos de uso');
     } else {
       FocusScope.of(context).unfocus();
       AppService().checkInternet().then((hasInternet) async {
@@ -74,20 +74,24 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         } else {
           UserModel userModel = UserModel(
             userName: userNameCtrl.text,
-            emailId: emailCtrl.text, 
+            emailId: emailCtrl.text,
             password: passwordCtrl.text,
           );
-          await AuthService.createUser(userModel).then((UserResponseModel response) async{
-            if(response.code == 200){
-              await ub.guestUserSignout()
-              .then((value) => ub.saveUserData(userModel, 'email'))
-              .then((value) => ub.setSignIn()).then((value){
+          await AuthService.createUser(userModel)
+              .then((UserResponseModel response) async {
+            if (response.code == 200) {
+              await ub
+                  .guestUserSignout()
+                  .then((value) => ub.saveUserData(userModel, 'email'))
+                  .then((value) => ub.setSignIn())
+                  .then((value) {
                 _btnController.success();
                 afterSignUp();
               });
-            }else{
+            } else {
               _btnController.reset();
-              openSnacbar(context, response.message);
+              openSnacbar(
+                  context, 'Dados já cadastrados. Tente realizar o seu login');
             }
           });
         }
@@ -107,7 +111,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
     final configs = context.read<ConfigBloc>().configs!;
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         leading: IconButton(
@@ -116,15 +120,18 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
+        padding:
+            const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'create-account',
-              style:
-                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(fontWeight: FontWeight.w700),
             ).tr(),
             const SizedBox(
               height: 10,
@@ -136,10 +143,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   .titleMedium
                   ?.copyWith(color: Theme.of(context).colorScheme.secondary),
             ).tr(),
-
             Visibility(
-              visible: configs.socialLoginsEnabled,
-              child: SocialLogins(afterSignIn: afterSignUp)),
+                visible: configs.socialLoginsEnabled,
+                child: SocialLogins(afterSignIn: afterSignUp)),
             const SizedBox(
               height: 40,
             ),
@@ -148,7 +154,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               children: [
                 Text(
                   'username',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ).tr(),
                 Container(
                   height: 50,
@@ -174,7 +183,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 ),
                 Text(
                   'email',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ).tr(),
                 Container(
                   height: 50,
@@ -200,7 +212,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 ),
                 Text(
                   'password',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ).tr(),
                 Container(
                   height: 50,
@@ -249,7 +264,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         style: TextStyle(color: Colors.blueAccent),
                       ).tr(),
                       onTap: () => AppService().openLinkWithCustomTab(
-                          context, context.read<ConfigBloc>().configs!.priivacyPolicyUrl.toString()),
+                          context,
+                          context
+                              .read<ConfigBloc>()
+                              .configs!
+                              .priivacyPolicyUrl
+                              .toString()),
                     )
                   ],
                 ),
@@ -267,7 +287,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     children: [
                       Text(
                         'create-account',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
                       ).tr()
                     ],
                   ),
@@ -281,19 +306,18 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     children: [
                       Text(
                         "already-have-account",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: Theme.of(context).colorScheme.secondary),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.secondary),
                       ).tr(),
                       TextButton(
-                          child: Text(
-                            'login',
-                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15
-                            )
-                          ).tr(),
+                          child: Text('login',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15))
+                              .tr(),
                           onPressed: () => nextScreenReplaceiOS(
                               context,
                               LoginPage(
